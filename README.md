@@ -1,16 +1,28 @@
-## Hi there 👋
+  <h1 align="center">Hi 👋, I'm Xiaohan Meng</h1>
+  <h3 align="center">A student from Nanjing University of Science and Technology</h3>
 
-<!--
-**TEITAR-mxh/TEITAR-mxh** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+  - 🔭 I'm currently studying at **Nanjing University of Science and Technology (NJUST)**
+  - 🌱 I'm learning and exploring on **GitHub**
+  - 🤝 I'm looking to **make contributions to the open-source community**
+  - 📫 How to reach me: **[your-email@example.com]**
 
-Here are some ideas to get you started:
+  ---
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+  ### 🛠️ Languages and Tools
+
+  <!-- You can add badges for the languages/tools you use from https://shields.io -->
+
+  ---
+
+  ### 📊 GitHub Stats
+
+  <p align="center">
+    <img src="https://github-readme-stats.vercel.app/api?username=TEITAR-mxh&show_icons=true&theme=default" alt="GitHub
+  Stats" />
+  </p>
+
+  ---
+
+  <p align="center">
+    <i>Let's connect and learn together!</i>
+  </p>
