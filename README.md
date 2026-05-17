@@ -36,8 +36,8 @@
 <h3 align="center">📊 GitHub Statistics</h3>
 
 <p align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=TEITAR-mxh&show_icons=true&theme=github_dark&hide_border=true&include_all_commits=true" />
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=TEITAR-mxh&layout=compact&theme=github_dark&hide_border=true&langs_count=8&hide_border=true" />
+  <img height="180" src="https://github-readme-stats.vercel.app/api?username=TEITAR-mxh&show_icons=true&theme=github_dark&hide_border=true&include_all_commits=true" />
+  <img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=TEITAR-mxh&layout=compact&theme=github_dark&hide_border=true&langs_count=8" />
 </p>
 
 <p align="center">
