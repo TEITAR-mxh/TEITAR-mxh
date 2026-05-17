@@ -4,7 +4,7 @@
   - 🔭 I'm currently studying at **Nanjing University of Science and Technology (NJUST)**
   - 🌱 I'm learning and exploring on **GitHub**
   - 🤝 I'm looking to **make contributions to the open-source community**
-  - 📫 How to reach me: **[your-email@example.com]**
+  - 📫 How to reach me: **[923106840605@njust.edu.cn]**
 
   ---
 
