@@ -7,15 +7,19 @@
   <meta name="description" content="Xiaohan Meng — Student at NJUST, exploring AI & Robotics" />
   <style>
     :root {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --border: #30363d;
-      --text: #c9d1d9;
-      --text-muted: #8b949e;
-      --accent: #58a6ff;
-      --accent2: #3fb950;
-      --gradient-1: #58a6ff;
-      --gradient-2: #bc8cff;
+      --bg: #050510;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #e1e1ec;
+      --text-muted: #9090a8;
+      --blue: #4dabf7;
+      --purple: #be4bdb;
+      --green: #40c057;
+      --orange: #ff922b;
+      --pink: #f06595;
+      --yellow: #ffd43b;
+      --shadow-hard: 0 4px 0 rgba(0,0,0,0.6);
+      --border-thick: 2px;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -24,189 +28,370 @@
       color: var(--text);
       line-height: 1.6;
       min-height: 100vh;
+      overflow-x: hidden;
     }
-    .container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
 
-    /* Header */
-    .header {
-      text-align: center;
-      padding: 80px 0 40px;
+    /* ===== Particle Canvas ===== */
+    #particles {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ===== Layout ===== */
+    .container {
       position: relative;
-    }
-    .header::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 50%; transform: translateX(-50%);
-      width: 120px; height: 3px;
-      background: linear-gradient(90deg, var(--gradient-1), var(--gradient-2));
-      border-radius: 2px;
-    }
-    .avatar {
-      width: 120px; height: 120px; border-radius: 50%;
-      border: 3px solid var(--border);
-      margin-bottom: 20px;
-      transition: transform 0.3s;
-    }
-    .avatar:hover { transform: scale(1.05); }
-    .header h1 {
-      font-size: 2.4rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .header .subtitle {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      margin-top: 8px;
+      z-index: 1;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
     }
 
-    /* Section */
-    .section {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 32px;
+    /* ===== Hero ===== */
+    .hero {
+      text-align: center;
+      padding: 80px 0 50px;
+    }
+    .hero-avatar {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.15);
       margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
     }
-    .section h2 {
-      font-size: 1.3rem;
-      margin-bottom: 16px;
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .hero h1 .dot {
+      color: var(--blue);
+    }
+    .hero .tagline {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 24px;
+    }
+    .hero-badges {
       display: flex;
-      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 10px;
     }
-    .section h2::before {
-      content: '';
-      width: 4px; height: 20px;
-      background: var(--accent);
-      border-radius: 2px;
+    .badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(8px);
     }
 
-    /* About */
-    .about-list { list-style: none; }
-    .about-list li {
-      padding: 8px 0;
-      color: var(--text-muted);
+    /* ===== Glass Card ===== */
+    .glass-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 20px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .glass-card:hover {
+      border-color: rgba(255,255,255,0.15);
+      transform: translateY(-2px);
+    }
+    .glass-card h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      color: #fff;
       display: flex;
       align-items: center;
       gap: 10px;
     }
-    .about-list li::before { content: '▸'; color: var(--accent2); }
+    .glass-card h2 .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+
+    /* ===== About List ===== */
+    .about-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .about-list li {
+      padding: 6px 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
     .about-list li b { color: var(--text); }
 
-    /* Tech */
+    /* ===== Bento Grid ===== */
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 768px) { .bento { grid-template-columns: 1fr; } }
+
+    .bento-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: var(--border-thick) solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .bento-card:hover {
+      transform: translateY(-4px);
+    }
+    .bento-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .bento-card.card-teaching::before { background: linear-gradient(90deg, var(--green), var(--blue)); }
+    .bento-card.card-dance::before { background: linear-gradient(90deg, var(--pink), var(--purple)); }
+    .bento-card.card-lecture::before { background: linear-gradient(90deg, var(--orange), var(--yellow)); }
+
+    .bento-card.card-teaching:hover { border-color: var(--green); box-shadow: 4px 4px 0 rgba(64,192,87,0.3); }
+    .bento-card.card-dance:hover { border-color: var(--pink); box-shadow: 4px 4px 0 rgba(240,101,149,0.3); }
+    .bento-card.card-lecture:hover { border-color: var(--orange); box-shadow: 4px 4px 0 rgba(255,146,43,0.3); }
+
+    .bento-card .card-tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      border: 1px solid;
+    }
+    .card-teaching .card-tag { color: var(--green); border-color: rgba(64,192,87,0.3); background: rgba(64,192,87,0.1); }
+    .card-dance .card-tag { color: var(--pink); border-color: rgba(240,101,149,0.3); background: rgba(240,101,149,0.1); }
+    .card-lecture .card-tag { color: var(--orange); border-color: rgba(255,146,43,0.3); background: rgba(255,146,43,0.1); }
+
+    .bento-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .bento-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+    .bento-card .highlight {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .bento-card .award {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .card-teaching .award { color: var(--green); background: rgba(64,192,87,0.1); }
+    .card-dance .award { color: var(--pink); background: rgba(240,101,149,0.1); }
+    .card-lecture .award { color: var(--orange); background: rgba(255,146,43,0.1); }
+
+    /* ===== Tech Tags ===== */
     .tech-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
     .tech-tag {
-      padding: 6px 16px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      font-size: 0.9rem;
+      padding: 5px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      font-size: 0.84rem;
       color: var(--text);
-      transition: border-color 0.2s, transform 0.2s;
+      font-weight: 500;
+      transition: all 0.2s;
     }
-    .tech-tag:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .tech-tag:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      box-shadow: 2px 2px 0 rgba(77,171,247,0.25);
+    }
 
-    /* Links */
-    .links {
+    /* ===== Stats Section ===== */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 640px) { .stats-grid { grid-template-columns: 1fr; } }
+    .stats-grid img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    /* ===== Links ===== */
+    .links-row {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      justify-content: center;
     }
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 24px;
-      border: 1px solid var(--border);
+      padding: 10px 22px;
+      border: var(--border-thick) solid var(--card-border);
       border-radius: 8px;
       color: var(--text);
       text-decoration: none;
-      font-size: 0.95rem;
-      transition: border-color 0.2s, background 0.2s;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
     }
-    .btn:hover { border-color: var(--accent); background: rgba(88,166,255,0.08); }
-    .btn-primary {
-      background: #238636;
-      border-color: #238636;
-      color: #fff;
+    .btn:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      box-shadow: 3px 3px 0 rgba(77,171,247,0.25);
+      transform: translate(-2px, -2px);
     }
-    .btn-primary:hover { background: #2ea043; border-color: #2ea043; }
-
-    /* Stats placeholders */
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
+    .btn-accent {
+      border-color: var(--green);
+      color: var(--green);
     }
-    .stat-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 20px;
-      text-align: center;
-    }
-    .stat-card .number {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-    .stat-card .label {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 4px;
+    .btn-accent:hover {
+      box-shadow: 3px 3px 0 rgba(64,192,87,0.3);
+      transform: translate(-2px, -2px);
     }
 
-    /* Footer */
+    /* ===== Footer ===== */
     .footer {
       text-align: center;
       padding: 40px 0;
       color: var(--text-muted);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
     }
-    .footer a { color: var(--accent); text-decoration: none; }
+    .footer a { color: var(--blue); text-decoration: none; }
 
-    /* Responsive */
-    @media (max-width: 640px) {
-      .header { padding: 50px 0 30px; }
-      .header h1 { font-size: 1.8rem; }
-      .section { padding: 20px; }
-      .stats-row { grid-template-columns: 1fr 1fr; }
+    /* ===== Glow Orbs ===== */
+    .glow-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 0;
     }
+    .glow-orb-1 { width: 500px; height: 500px; background: var(--blue); top: -200px; right: -150px; }
+    .glow-orb-2 { width: 400px; height: 400px; background: var(--purple); bottom: -100px; left: -150px; }
+    .glow-orb-3 { width: 300px; height: 300px; background: var(--pink); top: 50%; left: 50%; transform: translate(-50%, -50%); }
   </style>
 </head>
 <body>
 
-<header class="header">
-  <img class="avatar"
+<!-- Background glow orbs -->
+<div class="glow-orb glow-orb-1"></div>
+<div class="glow-orb glow-orb-2"></div>
+<div class="glow-orb glow-orb-3"></div>
+
+<!-- Dynamic particles -->
+<canvas id="particles"></canvas>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <img class="hero-avatar"
        src="https://avatars.githubusercontent.com/TEITAR-mxh"
-       alt="Xiaohan Meng avatar"
-       onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%2330363d%22 width=%22100%22 height=%22100%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 fill=%22%238b949e%22 font-size=%2240%22>XM</text></svg>'" />
-  <h1>Xiaohan Meng</h1>
-  <p class="subtitle">Student at NJUST · Exploring AI &amp; Robotics · Open Source Contributor</p>
+       alt="Xiaohan Meng"
+       onerror="this.style.display='none'" />
+  <h1>Xiaohan Meng<span class="dot">.</span></h1>
+  <p class="tagline">
+    NJUST undergraduate exploring <b>AI</b>, <b>Computer Vision</b> &amp; <b>Robot Learning</b>.
+    Builder, dancer, storyteller.
+  </p>
+  <div class="hero-badges">
+    <span class="badge">Nanjing, China</span>
+    <span class="badge">NJUST</span>
+    <span class="badge">Open Source</span>
+  </div>
 </header>
 
 <div class="container">
 
-  <div class="section">
-    <h2>About Me</h2>
+  <!-- ===== ABOUT ===== -->
+  <div class="glass-card">
+    <h2><span class="icon" style="background:rgba(77,171,247,0.15);">📋</span> About Me</h2>
     <ul class="about-list">
-      <li>Student at <b>Nanjing University of Science &amp; Technology (NJUST)</b></li>
-      <li>Currently diving deep into <b>Computer Vision &amp; Robot Learning</b></li>
-      <li>Open Source Contributor · Always learning new things</li>
-      <li>Reach me at <b>923106840605@njust.edu.cn</b></li>
+      <li>Undergraduate at <b>Nanjing University of Science &amp; Technology (NJUST)</b></li>
+      <li>Focused on <b>Computer Vision</b> and <b>Robot Learning</b></li>
+      <li>Open source contributor, always curious, always building</li>
+      <li>📬 <b>923106840605@njust.edu.cn</b></li>
     </ul>
   </div>
 
-  <div class="section">
-    <h2>Tech Stack</h2>
+  <!-- ===== ACTIVITIES BENTO ===== -->
+  <div class="bento">
+    <!-- Teaching -->
+    <div class="bento-card card-teaching">
+      <span class="card-tag">Volunteer</span>
+      <h3>Ivy League Volunteer Teaching</h3>
+      <p>
+        Led a <span class="highlight">14-person team</span> to <span class="highlight">Xieba Township Central Primary School</span>
+        in Zunyi, Guizhou during summer break, teaching and managing all <span class="highlight">254 students</span>.
+        Served as <span class="highlight">Grade 5 homeroom teacher</span> as well as English and Music instructor.
+      </p>
+      <span class="award">Jiangsu Key Social Practice Team</span>
+      <span class="award">School "Three to the Countryside" First Prize</span>
+    </div>
+
+    <!-- Dance -->
+    <div class="bento-card card-dance">
+      <span class="card-tag">Dance</span>
+      <h3>Dance Troupe: "Mission"</h3>
+      <p>
+        Performer in <span class="highlight">"Mission"</span>, nominated for the Ministry of Culture and Tourism's
+        <span class="highlight">"Qunxing Award"</span> — China's highest honor for amateur art.
+      </p>
+      <span class="award">National 1st Prize — National College Art Exhibition</span>
+      <span class="award">Jiangsu Special Prize</span>
+    </div>
+
+    <!-- Lecture -->
+    <div class="bento-card card-lecture">
+      <span class="card-tag">Lecturer</span>
+      <h3>"Qingyan" Lecturer Group</h3>
+      <p>
+        Core member of the <span class="highlight">"Jinggangshan Spirit"</span> propaganda team,
+        delivering <span class="highlight">10+ lectures</span> across communities and universities,
+        spreading revolutionary spirit through storytelling.
+      </p>
+      <span class="award">Ideological Skills Competition — School Special Prize</span>
+    </div>
+  </div>
+
+  <!-- ===== TECH STACK ===== -->
+  <div class="glass-card">
+    <h2><span class="icon" style="background:rgba(190,75,219,0.15);">⚡</span> Tech Stack</h2>
     <div class="tech-grid">
       <span class="tech-tag">Python</span>
       <span class="tech-tag">C++</span>
@@ -223,40 +408,126 @@
     </div>
   </div>
 
-  <div class="section">
-    <h2>Links</h2>
-    <div class="links">
-      <a href="https://github.com/TEITAR-mxh" class="btn" target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-        GitHub Profile
-      </a>
-      <a href="mailto:923106840605@njust.edu.cn" class="btn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 4-10 8L2 4"/></svg>
-        Email Me
-      </a>
+  <!-- ===== GITHUB STATS ===== -->
+  <div class="glass-card">
+    <h2><span class="icon" style="background:rgba(64,192,87,0.15);">📊</span> GitHub Stats</h2>
+    <div class="stats-grid">
+      <img src="https://github-readme-stats.vercel.app/api?username=TEITAR-mxh&show_icons=true&theme=transparent&hide_border=true&include_all_commits=true&title_color=fff&text_color=c9d1d9&icon_color=4dabf7&bg_color=ffffff05"
+           alt="GitHub Stats" loading="lazy" />
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=TEITAR-mxh&layout=compact&theme=transparent&hide_border=true&langs_count=8&title_color=fff&text_color=c9d1d9&bg_color=ffffff05"
+           alt="Top Languages" loading="lazy" />
     </div>
   </div>
 
-  <div class="section">
-    <h2>GitHub Stats</h2>
-    <p style="color:var(--text-muted);margin-bottom:16px;">Live statistics from my GitHub profile:</p>
-    <a href="https://github.com/TEITAR-mxh" target="_blank" rel="noopener" style="display:block;">
-      <img src="https://github-readme-stats.vercel.app/api?username=TEITAR-mxh&show_icons=true&theme=github_dark&hide_border=true&include_all_commits=true"
-           alt="GitHub Stats"
-           style="max-width:100%;height:auto;" />
-    </a>
-    <a href="https://github.com/TEITAR-mxh" target="_blank" rel="noopener" style="display:block;margin-top:12px;">
-      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=TEITAR-mxh&layout=compact&theme=github_dark&hide_border=true&langs_count=8"
-           alt="Top Languages"
-           style="max-width:100%;height:auto;" />
-    </a>
+  <!-- ===== LINKS ===== -->
+  <div class="glass-card">
+    <h2><span class="icon" style="background:rgba(255,146,43,0.15);">🔗</span> Links</h2>
+    <div class="links-row">
+      <a href="https://github.com/TEITAR-mxh" class="btn btn-accent" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+      <a href="mailto:923106840605@njust.edu.cn" class="btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 4-10 8L2 4"/></svg>
+        Email
+      </a>
+      <a href="https://teitar-mxh.github.io/TEITAR-mxh/" class="btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        Homepage
+      </a>
+    </div>
   </div>
 
 </div>
 
 <footer class="footer">
-  &copy; 2026 Xiaohan Meng &mdash; Built with &hearts; &mdash; Hosted on <a href="https://github.com/TEITAR-mxh">GitHub Pages</a>
+  &copy; 2026 Xiaohan Meng &mdash; Hosted on <a href="https://github.com/TEITAR-mxh">GitHub Pages</a>
 </footer>
+
+<!-- ===== Particle Animation ===== -->
+<script>
+(function() {
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let w, h, particles = [];
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const PARTICLE_COUNT = 80;
+  const CONNECT_DIST = 140;
+
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.x = Math.random() * w;
+      this.y = Math.random() * h;
+      this.vx = (Math.random() - 0.5) * 0.5;
+      this.vy = (Math.random() - 0.5) * 0.5;
+      this.radius = Math.random() * 1.5 + 0.5;
+      this.opacity = Math.random() * 0.35 + 0.1;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < -20) this.x = w + 20;
+      if (this.x > w + 20) this.x = -20;
+      if (this.y < -20) this.y = h + 20;
+      if (this.y > h + 20) this.y = -20;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${this.opacity})`;
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    const p = new Particle();
+    p.x = Math.random() * w;
+    p.y = Math.random() * h;
+    particles.push(p);
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, w, h);
+
+    for (const p of particles) {
+      p.update();
+      p.draw();
+    }
+
+    // Connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < CONNECT_DIST) {
+          const alpha = (1 - dist / CONNECT_DIST) * 0.12;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+})();
+</script>
 
 </body>
 </html>
