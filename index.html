@@ -4,23 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Xiaohan Meng</title>
-  <meta name="description" content="Xiaohan Meng — Student at NJUST" />
+  <meta name="description" content="Xiaohan Meng — CS undergrad at NJUST" />
   <style>
     :root {
-      --bg: #060610;
-      --card-bg: rgba(255,255,255,0.025);
-      --card-border: rgba(255,255,255,0.08);
-      --text: #d8d8e8;
-      --text-muted: #8080a0;
+      --bg: #070710;
+      --card-bg: rgba(255,255,255,0.02);
+      --border: rgba(255,255,255,0.07);
+      --text: #d0d0e0;
+      --muted: #707090;
       --blue: #4dabf7;
-      --purple: #be4bdb;
+      --purple: #b87cf0;
       --green: #40c057;
       --orange: #ff922b;
       --pink: #f06595;
+      --teal: #20c997;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -28,192 +29,127 @@
       overflow-x: hidden;
     }
 
-    #particles {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0; pointer-events: none;
-    }
+    #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
 
-    .glow-orb {
-      position: fixed; border-radius: 50%;
-      filter: blur(140px); opacity: 0.10;
+    .orb {
+      position: fixed; border-radius: 50%; filter: blur(140px); opacity: 0.08;
       pointer-events: none; z-index: 0;
     }
-    .glow-orb-1 { width: 500px; height: 500px; background: var(--blue); top: -200px; right: -150px; }
-    .glow-orb-2 { width: 400px; height: 400px; background: var(--purple); bottom: -100px; left: -150px; }
+    .orb-1 { width: 520px; height: 520px; background: var(--blue); top: -220px; right: -180px; }
+    .orb-2 { width: 380px; height: 380px; background: var(--purple); bottom: -120px; left: -140px; }
 
-    .container {
-      position: relative; z-index: 1;
-      max-width: 860px; margin: 0 auto;
-      padding: 0 24px 60px;
-    }
+    .container { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 0 22px 60px; }
 
-    /* Hero */
-    .hero {
-      text-align: center;
-      padding: 70px 0 40px;
-    }
+    /* ====== HERO ====== */
+    .hero { text-align: center; padding: 60px 0 36px; }
     .hero-avatar {
-      width: 96px; height: 96px;
-      border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.12);
-      margin-bottom: 20px;
+      width: 88px; height: 88px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.10);
+      margin-bottom: 18px;
     }
-    .hero h1 {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      font-weight: 800; letter-spacing: -0.5px;
-      color: #fff; margin-bottom: 10px;
+    .hero h1 { font-size: 2rem; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
+    .hero .sub {
+      margin-top: 6px; font-size: 0.88rem; color: var(--muted);
+      font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
     }
-    .hero .tagline {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      max-width: 480px; margin: 0 auto 20px;
-    }
-    .hero-badges {
-      display: flex; flex-wrap: wrap;
-      justify-content: center; gap: 8px;
-    }
-    .badge {
-      padding: 3px 12px;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      background: rgba(255,255,255,0.02);
-      backdrop-filter: blur(8px);
-    }
+    .hero .sub span { color: var(--teal); }
+    .hero .sub .sep { color: rgba(255,255,255,0.15); margin: 0 6px; }
 
-    /* Glass card */
+    /* ====== CARD ====== */
     .card {
       background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 30px;
-      margin-bottom: 18px;
-      transition: border-color 0.3s;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 16px;
     }
-    .card:hover { border-color: rgba(255,255,255,0.13); }
     .card h2 {
-      font-size: 1.05rem; font-weight: 700;
-      color: #fff; margin-bottom: 16px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .card h2 .dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      flex-shrink: 0;
+      font-size: 0.9rem; font-weight: 700; color: #aaa;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      margin-bottom: 16px;
     }
 
-    /* About */
-    .about-list { list-style: none; }
-    .about-list li {
-      padding: 5px 0;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-    .about-list li b { color: var(--text); }
+    /* ====== ABOUT (2-col on desktop) ====== */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 32px; }
+    @media (max-width: 600px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-item { display: flex; gap: 10px; align-items: flex-start; }
+    .about-item .key { color: var(--muted); font-size: 0.8rem; min-width: 70px; flex-shrink: 0; }
+    .about-item .val { color: var(--text); font-size: 0.9rem; font-weight: 500; }
+    .about-item .val a { color: var(--blue); text-decoration: none; }
 
-    /* Activities */
-    .activity-row {
-      display: flex; flex-direction: column; gap: 14px;
+    /* ====== ACTIVITIES ====== */
+    .act-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    @media (max-width: 700px) { .act-grid { grid-template-columns: 1fr; } }
+    .act-card {
+      background: rgba(255,255,255,0.015);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-top: 3px solid;
+      border-radius: 0 0 10px 10px;
+      padding: 18px 16px 16px;
+      transition: background 0.2s;
     }
-    .activity-item {
-      display: flex; gap: 14px;
-      padding: 14px 16px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-left: 3px solid;
-      border-radius: 0 8px 8px 0;
-      transition: background 0.2s, border-color 0.2s;
+    .act-card:hover { background: rgba(255,255,255,0.03); }
+    .act-card.a1 { border-top-color: var(--green); }
+    .act-card.a2 { border-top-color: var(--pink); }
+    .act-card.a3 { border-top-color: var(--orange); }
+    .act-card .act-emoji { font-size: 1.3rem; margin-bottom: 8px; display: block; }
+    .act-card h3 { font-size: 0.88rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .act-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+    .act-card .tag {
+      display: inline-block; margin-top: 8px;
+      font-size: 0.7rem; font-weight: 600; opacity: 0.7;
     }
-    .activity-item:hover { background: rgba(255,255,255,0.04); }
-    .activity-item.act-teach { border-left-color: var(--green); }
-    .activity-item.act-dance { border-left-color: var(--pink); }
-    .activity-item.act-talk  { border-left-color: var(--orange); }
-    .act-emoji { font-size: 1.4rem; flex-shrink: 0; line-height: 1; }
-    .act-body { flex: 1; min-width: 0; }
-    .act-body .act-title {
-      font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 2px;
-    }
-    .act-body .act-desc {
-      font-size: 0.84rem; color: var(--text-muted); line-height: 1.5;
-      margin-bottom: 4px;
-    }
-    .act-award {
-      font-size: 0.75rem; font-weight: 600;
-      padding: 1px 8px; border-radius: 3px;
-      display: inline-block; margin-top: 2px;
-    }
-    .act-teach .act-award { color: var(--green); background: rgba(64,192,87,0.08); }
-    .act-dance .act-award { color: var(--pink); background: rgba(240,101,149,0.08); }
-    .act-talk .act-award  { color: var(--orange); background: rgba(255,146,43,0.08); }
+    .act-card.a1 .tag { color: var(--green); }
+    .act-card.a2 .tag { color: var(--pink); }
+    .act-card.a3 .tag { color: var(--orange); }
 
-    /* Tech */
-    .tech-grid {
-      display: flex; flex-wrap: wrap; gap: 7px;
-    }
+    /* ====== TECH ====== */
+    .tech-row { display: flex; flex-wrap: wrap; gap: 7px; }
     .tech-tag {
-      padding: 4px 12px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 5px;
-      font-size: 0.82rem; color: var(--text);
-      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      padding: 3px 10px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 4px;
+      font-size: 0.8rem; color: var(--text);
+      transition: border-color 0.2s, transform 0.15s;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
     }
-    .tech-tag:hover {
-      border-color: var(--blue);
-      box-shadow: 2px 2px 0 rgba(77,171,247,0.2);
-      transform: translate(-1px, -1px);
-    }
+    .tech-tag:hover { border-color: var(--blue); transform: translateY(-1px); }
 
-    /* Stats */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-    @media (max-width: 640px) { .stats-grid { grid-template-columns: 1fr; } }
-    .stats-grid img {
-      width: 100%; border-radius: 6px;
-      background: rgba(255,255,255,0.02);
-    }
+    /* ====== STATS ====== */
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: 1fr; } }
+    .stats-grid a { display: block; }
+    .stats-grid img { width: 100%; border-radius: 6px; }
 
-    /* Links */
-    .links-row {
-      display: flex; flex-wrap: wrap; gap: 10px;
-    }
+    /* ====== LINKS ====== */
+    .links-row { display: flex; gap: 10px; flex-wrap: wrap; }
     .btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 8px 18px;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 7px;
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 7px 16px;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 6px;
       color: var(--text); text-decoration: none;
-      font-size: 0.85rem; font-weight: 600;
+      font-size: 0.84rem; font-weight: 600;
       background: rgba(255,255,255,0.02);
-      backdrop-filter: blur(8px);
-      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      transition: border-color 0.2s, transform 0.15s;
     }
-    .btn:hover {
-      border-color: var(--blue);
-      box-shadow: 3px 3px 0 rgba(77,171,247,0.2);
-      transform: translate(-2px, -2px);
-    }
-    .btn.btn-github { border-color: rgba(64,192,87,0.4); color: var(--green); }
-    .btn.btn-github:hover { box-shadow: 3px 3px 0 rgba(64,192,87,0.25); }
+    .btn:hover { border-color: var(--blue); transform: translateY(-1px); }
+    .btn.gh { border-color: rgba(64,192,87,0.35); color: var(--green); }
 
-    /* Footer */
     .footer {
-      text-align: center; padding: 36px 0;
-      color: var(--text-muted); font-size: 0.78rem;
+      text-align: center; padding: 32px 0;
+      color: var(--muted); font-size: 0.75rem;
     }
     .footer a { color: var(--blue); text-decoration: none; }
   </style>
 </head>
 <body>
 
-<div class="glow-orb glow-orb-1"></div>
-<div class="glow-orb glow-orb-2"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
 <canvas id="particles"></canvas>
 
 <header class="hero">
@@ -222,56 +158,50 @@
        alt="avatar"
        onerror="this.style.display='none'" />
   <h1>Xiaohan Meng</h1>
-  <p class="tagline">NJUST · Computer Vision &amp; Robot Learning · Open Source</p>
-  <div class="hero-badges">
-    <span class="badge">Nanjing</span>
-    <span class="badge">NJUST</span>
-    <span class="badge">Open Source</span>
-  </div>
+  <p class="sub">
+    <span>CS</span> <span class="sep">@</span> NJUST
+    <span class="sep">·</span> Nanjing
+    <span class="sep">·</span> <span>AI</span> &amp; <span>Robotics</span>
+  </p>
 </header>
 
 <div class="container">
 
   <!-- About -->
   <div class="card">
-    <h2><span class="dot" style="background:var(--blue);"></span> About</h2>
-    <ul class="about-list">
-      <li>Undergraduate at <b>Nanjing University of Science &amp; Technology</b></li>
-      <li>Focusing on <b>computer vision</b> and <b>robot learning</b></li>
-      <li>📬 923106840605@njust.edu.cn</li>
-    </ul>
+    <h2>About</h2>
+    <div class="about-grid">
+      <div class="about-item"><span class="key">School</span><span class="val">Nanjing University of Science &amp; Technology</span></div>
+      <div class="about-item"><span class="key">Major</span><span class="val">Computer Science &amp; Technology</span></div>
+      <div class="about-item"><span class="key">Interest</span><span class="val">Computer Vision, Robot Learning</span></div>
+      <div class="about-item"><span class="key">Email</span><span class="val"><a href="mailto:923106840605@njust.edu.cn">923106840605@njust.edu.cn</a></span></div>
+    </div>
   </div>
 
   <!-- Activities -->
   <div class="card">
-    <h2><span class="dot" style="background:var(--purple);"></span> Activities</h2>
-    <div class="activity-row">
+    <h2>Activities</h2>
+    <div class="act-grid">
 
-      <div class="activity-item act-teach">
+      <div class="act-card a1">
         <span class="act-emoji">🏫</span>
-        <div class="act-body">
-          <div class="act-title">Summer Volunteer Teaching in Guizhou</div>
-          <div class="act-desc">Led a 14-person team to Xieba Township, Zunyi — taught English and Music to 254 students as the Grade 5 homeroom teacher.</div>
-          <span class="act-award">Jiangsu Key Social Practice Team · School First Prize</span>
-        </div>
+        <h3>Volunteer Teaching</h3>
+        <p>Summer trip to a rural primary school in Zunyi, Guizhou with 14 teammates. I taught English and Music to 254 kids as the Grade 5 homeroom teacher.</p>
+        <span class="tag">Jiangsu Key Team · First Prize</span>
       </div>
 
-      <div class="activity-item act-dance">
+      <div class="act-card a2">
         <span class="act-emoji">💃</span>
-        <div class="act-body">
-          <div class="act-title">Dance Troupe &mdash; "Mission"</div>
-          <div class="act-desc">Performed in the award-winning piece nominated for the national "Qunxing Award" by the Ministry of Culture and Tourism.</div>
-          <span class="act-award">National 1st Prize · Jiangsu Special Prize</span>
-        </div>
+        <h3>Dance: "Mission"</h3>
+        <p>Performed as part of the school dance troupe. Our piece "Mission" was nominated for the national Qunxing Award and won first prize at the National College Art Exhibition.</p>
+        <span class="tag">National 1st · Jiangsu Special Prize</span>
       </div>
 
-      <div class="activity-item act-talk">
+      <div class="act-card a3">
         <span class="act-emoji">🎤</span>
-        <div class="act-body">
-          <div class="act-title">"Jinggangshan Spirit" Lecturer</div>
-          <div class="act-desc">Delivered 10+ talks on revolutionary history across local communities and universities as a member of the Qingyan Lecturer Group.</div>
-          <span class="act-award">School Special Prize — Ideological Skills Competition</span>
-        </div>
+        <h3>Jinggangshan Spirit Talks</h3>
+        <p>Gave 10+ lectures in communities and universities about Jinggangshan revolutionary history as part of the Qingyan Lecturer Group.</p>
+        <span class="tag">School Special Prize</span>
       </div>
 
     </div>
@@ -279,8 +209,8 @@
 
   <!-- Tech -->
   <div class="card">
-    <h2><span class="dot" style="background:var(--green);"></span> Tech Stack</h2>
-    <div class="tech-grid">
+    <h2>Tech Stack</h2>
+    <div class="tech-row">
       <span class="tech-tag">Python</span>
       <span class="tech-tag">C++</span>
       <span class="tech-tag">JavaScript</span>
@@ -298,7 +228,7 @@
 
   <!-- GitHub Stats -->
   <div class="card">
-    <h2><span class="dot" style="background:var(--orange);"></span> GitHub Stats</h2>
+    <h2>GitHub Stats</h2>
     <div class="stats-grid">
       <a href="https://github.com/TEITAR-mxh" target="_blank" rel="noopener">
         <img src="https://github-readme-stats.vercel.app/api?username=TEITAR-mxh&show_icons=true&theme=dark&hide_border=true&include_all_commits=true&count_private=true"
@@ -313,9 +243,9 @@
 
   <!-- Links -->
   <div class="card">
-    <h2><span class="dot" style="background:var(--pink);"></span> Links</h2>
+    <h2>Links</h2>
     <div class="links-row">
-      <a href="https://github.com/TEITAR-mxh" class="btn btn-github" target="_blank" rel="noopener">
+      <a href="https://github.com/TEITAR-mxh" class="btn gh" target="_blank" rel="noopener">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
         GitHub
       </a>
@@ -329,74 +259,48 @@
 </div>
 
 <footer class="footer">
-  &copy; 2026 Xiaohan Meng · <a href="https://github.com/TEITAR-mxh">GitHub</a>
+  © 2026 Xiaohan Meng · <a href="https://github.com/TEITAR-mxh">GitHub</a>
 </footer>
 
 <script>
 (function() {
-  const canvas = document.getElementById('particles');
-  const ctx = canvas.getContext('2d');
-  let w, h, particles = [];
+  const c = document.getElementById('particles');
+  const ctx = c.getContext('2d');
+  let w, h, ps = [];
 
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
+  function rs() { w = c.width = innerWidth; h = c.height = innerHeight; }
+  rs(); addEventListener('resize', rs);
 
-  const N = 70;
-  const MAX_DIST = 130;
+  for (let i = 0; i < 60; i++) ps.push({
+    x: Math.random() * w, y: Math.random() * h,
+    vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35,
+    r: Math.random() * 1.0 + 0.3,
+    a: Math.random() * 0.25 + 0.06
+  });
 
-  class Particle {
-    constructor() {
-      this.x = Math.random() * w;
-      this.y = Math.random() * h;
-      this.vx = (Math.random() - 0.5) * 0.4;
-      this.vy = (Math.random() - 0.5) * 0.4;
-      this.r = Math.random() * 1.2 + 0.4;
-      this.alpha = Math.random() * 0.3 + 0.08;
-    }
-    update() {
-      this.x += this.vx;
-      this.y += this.vy;
-      if (this.x < -20) this.x = w + 20;
-      if (this.x > w + 20) this.x = -20;
-      if (this.y < -20) this.y = h + 20;
-      if (this.y > h + 20) this.y = -20;
-    }
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${this.alpha})`;
-      ctx.fill();
-    }
-  }
-
-  for (let i = 0; i < N; i++) particles.push(new Particle());
-
-  function animate() {
+  function frame() {
     ctx.clearRect(0, 0, w, h);
-    for (const p of particles) { p.update(); p.draw(); }
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < MAX_DIST) {
-          const a = (1 - dist / MAX_DIST) * 0.10;
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(255,255,255,${a})`;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
+    for (const p of ps) {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -10) p.x = w + 10; if (p.x > w + 10) p.x = -10;
+      if (p.y < -10) p.y = h + 10; if (p.y > h + 10) p.y = -10;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(255,255,255,${p.a})`; ctx.fill();
+    }
+    for (let i = 0; i < ps.length; i++) {
+      for (let j = i+1; j < ps.length; j++) {
+        const dx = ps[i].x - ps[j].x, dy = ps[i].y - ps[j].y;
+        const d = Math.sqrt(dx*dx+dy*dy);
+        if (d < 120) {
+          ctx.beginPath(); ctx.moveTo(ps[i].x, ps[i].y); ctx.lineTo(ps[j].x, ps[j].y);
+          ctx.strokeStyle = `rgba(255,255,255,${(1-d/120)*0.08})`;
+          ctx.lineWidth = 0.4; ctx.stroke();
         }
       }
     }
-    requestAnimationFrame(animate);
+    requestAnimationFrame(frame);
   }
-  animate();
+  frame();
 })();
 </script>
 
