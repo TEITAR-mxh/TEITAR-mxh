@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xiaohan Meng — Personal Homepage</title>
+  <meta name="description" content="Xiaohan Meng — Student at NJUST, exploring AI & Robotics" />
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --text: #c9d1d9;
+      --text-muted: #8b949e;
+      --accent: #58a6ff;
+      --accent2: #3fb950;
+      --gradient-1: #58a6ff;
+      --gradient-2: #bc8cff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 80px 0 40px;
+      position: relative;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 120px; height: 3px;
+      background: linear-gradient(90deg, var(--gradient-1), var(--gradient-2));
+      border-radius: 2px;
+    }
+    .avatar {
+      width: 120px; height: 120px; border-radius: 50%;
+      border: 3px solid var(--border);
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+    .avatar:hover { transform: scale(1.05); }
+    .header h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .header .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* Section */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+    .section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section h2::before {
+      content: '';
+      width: 4px; height: 20px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* About */
+    .about-list { list-style: none; }
+    .about-list li {
+      padding: 8px 0;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .about-list li::before { content: '▸'; color: var(--accent2); }
+    .about-list li b { color: var(--text); }
+
+    /* Tech */
+    .tech-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .tech-tag {
+      padding: 6px 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: var(--text);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .tech-tag:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+    /* Links */
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn:hover { border-color: var(--accent); background: rgba(88,166,255,0.08); }
+    .btn-primary {
+      background: #238636;
+      border-color: #238636;
+      color: #fff;
+    }
+    .btn-primary:hover { background: #2ea043; border-color: #2ea043; }
+
+    /* Stats placeholders */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .stat-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    .stat-card .number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .stat-card .label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .header { padding: 50px 0 30px; }
+      .header h1 { font-size: 1.8rem; }
+      .section { padding: 20px; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <img class="avatar"
+       src="https://avatars.githubusercontent.com/TEITAR-mxh"
+       alt="Xiaohan Meng avatar"
+       onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%2330363d%22 width=%22100%22 height=%22100%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 fill=%22%238b949e%22 font-size=%2240%22>XM</text></svg>'" />
+  <h1>Xiaohan Meng</h1>
+  <p class="subtitle">Student at NJUST · Exploring AI &amp; Robotics · Open Source Contributor</p>
+</header>
+
+<div class="container">
+
+  <div class="section">
+    <h2>About Me</h2>
+    <ul class="about-list">
+      <li>Student at <b>Nanjing University of Science &amp; Technology (NJUST)</b></li>
+      <li>Currently diving deep into <b>Computer Vision &amp; Robot Learning</b></li>
+      <li>Open Source Contributor · Always learning new things</li>
+      <li>Reach me at <b>923106840605@njust.edu.cn</b></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Tech Stack</h2>
+    <div class="tech-grid">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">C++</span>
+      <span class="tech-tag">JavaScript</span>
+      <span class="tech-tag">TypeScript</span>
+      <span class="tech-tag">Vue</span>
+      <span class="tech-tag">React</span>
+      <span class="tech-tag">PyTorch</span>
+      <span class="tech-tag">TensorFlow</span>
+      <span class="tech-tag">ROS</span>
+      <span class="tech-tag">Linux</span>
+      <span class="tech-tag">Docker</span>
+      <span class="tech-tag">Figma</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Links</h2>
+    <div class="links">
+      <a href="https://github.com/TEITAR-mxh" class="btn" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub Profile
+      </a>
+      <a href="mailto:923106840605@njust.edu.cn" class="btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 4-10 8L2 4"/></svg>
+        Email Me
+      </a>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>GitHub Stats</h2>
+    <p style="color:var(--text-muted);margin-bottom:16px;">Live statistics from my GitHub profile:</p>
+    <a href="https://github.com/TEITAR-mxh" target="_blank" rel="noopener" style="display:block;">
+      <img src="https://github-readme-stats.vercel.app/api?username=TEITAR-mxh&show_icons=true&theme=github_dark&hide_border=true&include_all_commits=true"
+           alt="GitHub Stats"
+           style="max-width:100%;height:auto;" />
+    </a>
+    <a href="https://github.com/TEITAR-mxh" target="_blank" rel="noopener" style="display:block;margin-top:12px;">
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=TEITAR-mxh&layout=compact&theme=github_dark&hide_border=true&langs_count=8"
+           alt="Top Languages"
+           style="max-width:100%;height:auto;" />
+    </a>
+  </div>
+
+</div>
+
+<footer class="footer">
+  &copy; 2026 Xiaohan Meng &mdash; Built with &hearts; &mdash; Hosted on <a href="https://github.com/TEITAR-mxh">GitHub Pages</a>
+</footer>
+
+</body>
+</html>
