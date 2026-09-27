@@ -16,7 +16,7 @@
   }
 
   // Supercounters widget ID (created for this homepage).
-  var WIDGET_ID = 1738977;
+  var WIDGET_ID = 1738978;
 
   function loadMap() {
     let timeout;
@@ -44,7 +44,7 @@
         return;
       }
       try {
-        window.sc_map(WIDGET_ID, '0ffcec', 'ff0000', 53);
+        window.sc_map(WIDGET_ID, '112288', 'ff0000', 50);
       } catch (error) {
         showUnavailable();
       }
