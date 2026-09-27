@@ -3,11 +3,11 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/TEITAR-mxh"><img src="https://readme-typing-svg.demolab.com/?lines=Student+at+NJUST;Exploring+AI+%26+Robotics;Open+Source+Contributor;Always+learning+new+things&font=Fira+Code&center=true&width=440&height=45&color=58A6FF&vCenter=true&pause=1000&size=22" /></a>
+  <a href="https://github.com/TEITAR-mxh"><img src="https://readme-typing-svg.demolab.com/?lines=Incoming+Master's+Student+at+UCAS;Computer+Vision+%26+LLM;Undergrad+at+NJUST;Always+Learning+New+Things&font=Fira+Code&center=true&width=440&height=45&color=58A6FF&vCenter=true&pause=1000&size=22" /></a>
 </p>
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=TEITAR-mxh&label=Profile%20Views&color=0e75b6&style=flat" alt="profile views" />
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=TEITAR-mxh&left_color=0e75b6&right_color=58a6ff&left_text=Profile%20Views" alt="profile views" />
   <a href="https://github.com/TEITAR-mxh?tab=followers"><img src="https://img.shields.io/github/followers/TEITAR-mxh?label=Followers&style=social" /></a>
 </p>
 
@@ -16,9 +16,10 @@
 <h3 align="center">🧠 About Me</h3>
 
 <p align="center">
-  🎓 Student at <b>Nanjing University of Science & Technology (NJUST)</b><br/>
-  🌱 Currently diving deep into <b>Computer Vision & Robot Learning</b><br/>
-  📬 Reach me at: <b>923106840605@njust.edu.cn</b>
+  🎓 Incoming Master's student at <b>University of Chinese Academy of Sciences (UCAS)</b> · joining IIE, CAS in Fall 2027<br/>
+  🌱 Final-year undergraduate in <b>Computer Science & Technology</b> at <b>NJUST</b><br/>
+  🔬 Researching <b>Computer Vision & Large Language Models</b><br/>
+  🏠 <a href="https://teitar-mxh.github.io/TEITAR-mxh">Personal homepage</a>
 </p>
 
 ---
@@ -29,31 +30,6 @@
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=python,cpp,js,ts,vue,react,pytorch,tensorflow,ros,linux,docker,figma&perline=6" />
   </a>
-</p>
-
----
-
-<h3 align="center">📊 GitHub Statistics</h3>
-
-<p align="center">
-  <img height="180" src="https://github-readme-stats.vercel.app/api?username=TEITAR-mxh&show_icons=true&theme=github_dark&hide_border=true&include_all_commits=true" />
-  <img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=TEITAR-mxh&layout=compact&theme=github_dark&hide_border=true&langs_count=8" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=TEITAR-mxh&theme=github-dark&hide_border=true" />
-</p>
-
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=TEITAR-mxh&theme=darkhub&no-frame=true&row=1&column=7&margin-w=15" />
-</p>
-
----
-
-<h3 align="center">📈 Contribution Activity</h3>
-
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=TEITAR-mxh&theme=github-dark&hide_border=true&area=true" />
 </p>
 
 ---
