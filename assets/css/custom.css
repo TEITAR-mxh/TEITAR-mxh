@@ -87,6 +87,20 @@ body.theme-luka .site-name::after {
   background: linear-gradient(90deg, var(--luka-accent), var(--luka-border));
 }
 
+/* ---- UI polish ---- */
+body.theme-luka .section-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--luka-accent);
+  box-shadow: 0 0 0 3px var(--luka-accent-soft);
+}
+body.theme-luka .comp-item { transition: color var(--luka-motion-fast) ease; }
+body.theme-luka .comp-item:hover .comp-name { color: var(--luka-accent); }
+body.theme-luka .nav-link { transition: color var(--luka-motion-fast) ease, background-color var(--luka-motion-fast) ease, transform var(--luka-motion-press) var(--luka-ease-out); }
+
 /* ---- bilibili icon fill ---- */
 body.theme-luka .social-icons .icon-bilibili { fill: currentColor; stroke: none; }
 
