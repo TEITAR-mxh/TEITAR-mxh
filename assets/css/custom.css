@@ -221,10 +221,10 @@ body.theme-luka .edu-card {
 body.theme-luka .edu-card + .edu-card { margin-top: 12px; }
 body.theme-luka .edu-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 body.theme-luka .edu-logo {
-  flex-shrink: 0; width: 46px; height: 46px; object-fit: contain;
-  padding: 5px; border-radius: 12px;
+  flex-shrink: 0; width: 66px; height: 66px; object-fit: contain;
+  padding: 7px; border-radius: 15px;
   background: #fff; border: 1px solid var(--luka-footer-border);
-  box-shadow: 0 2px 8px var(--luka-shadow-soft);
+  box-shadow: 0 2px 10px var(--luka-shadow-soft);
 }
 body.theme-luka .edu-main { min-width: 0; }
 body.theme-luka .edu-name { font-size: 16.5px; }
