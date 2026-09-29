@@ -147,7 +147,7 @@ body.theme-luka .comp-award { flex-shrink: 0; text-align: right; font-size: 13.5
 /* ---- projects ---- */
 body.theme-luka .proj-list { display: flex; flex-direction: column; gap: 16px; }
 body.theme-luka .proj-card {
-  display: flex; align-items: stretch; padding: 0; overflow: hidden;
+  display: flex; align-items: center; padding: 0; overflow: hidden;
   border: 1px solid var(--luka-footer-border); border-radius: 14px;
   background: var(--luka-panel);
   transition: border-color var(--luka-motion-fast) ease, box-shadow var(--luka-motion-fast) var(--luka-ease-out), transform var(--luka-motion-press) var(--luka-ease-out);
@@ -157,10 +157,10 @@ body.theme-luka .proj-card:hover {
   box-shadow: 0 10px 28px var(--luka-shadow-soft);
   transform: translateY(-2px);
 }
-body.theme-luka .proj-thumb { flex: 0 0 300px; min-height: 128px; overflow: hidden; background: var(--luka-panel-muted); }
+body.theme-luka .proj-thumb { flex: 0 0 300px; aspect-ratio: 16/9; overflow: hidden; background: var(--luka-panel-muted); }
 body.theme-luka .proj-thumb img {
   width: 100%; height: 100%; display: block;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 body.theme-luka .proj-card:hover .proj-thumb img { transform: scale(1.05); }
