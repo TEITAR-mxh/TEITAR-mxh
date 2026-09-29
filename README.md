@@ -18,7 +18,7 @@
 <p align="center">
   🎓 Incoming Master's student at <b>University of Chinese Academy of Sciences (UCAS)</b> · joining IIE, CAS in Fall 2027<br/>
   🌱 Final-year undergraduate in <b>Computer Science & Technology</b> at <b>NJUST</b><br/>
-  🔬 Researching <b>Computer Vision & Large Language Models</b><br/>
+  🔬 Researching <b>Large Language Models & Natural Language Processing</b><br/>
   🏠 <a href="https://teitar-mxh.github.io/TEITAR-mxh">Personal homepage</a>
 </p>
 
