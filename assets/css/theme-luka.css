@@ -348,7 +348,7 @@ body.theme-luka .site-name {
   margin: 0 0 16px;
   color: var(--luka-text);
   font-family: "Archivo Black", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 33px;
+  font-size: 27px;
   /* Archivo Black's regular face is already a heavy, purpose-drawn weight. */
   font-weight: 400;
   font-kerning: normal;
@@ -1546,7 +1546,7 @@ body.theme-luka summary:focus-visible {
   }
 
   body.theme-luka .site-name {
-    font-size: 29px;
+    font-size: 24px;
   }
 
   body.theme-luka .lang-switch {
